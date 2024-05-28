@@ -2,6 +2,8 @@ package com.app.mylog.board.service;
 
 import static com.kh.app.db.SqlSessionTemplate.getSqlSession;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.app.mylog.board.dao.BoardDao;
@@ -15,6 +17,7 @@ private final BoardDao dao;
 		dao = new BoardDao();
 	}
 	
+	// 게시글 작성
 	public int wrtieBoard(BoardVo vo) throws Exception {
 		
 		//Dao 호출
@@ -32,6 +35,7 @@ private final BoardDao dao;
 		
 	}
 	
+	// 게시글 삭제
 	public int deleteBoard(String no) throws Exception {
 		
 		//Dao 호출
@@ -49,6 +53,7 @@ private final BoardDao dao;
 		return result;
 	}
 	
+	// 게시글 수정
 	public int editBoard(BoardVo vo) throws Exception {
 		SqlSession ss = getSqlSession();
 		
@@ -64,5 +69,17 @@ private final BoardDao dao;
 		return result;
 	
 	}
+
+	// 최신 게시글 조회
+	public List<BoardVo> recentBoardCheck() throws Exception {
+		
+		SqlSession ss = getSqlSession();
+		List<BoardVo> voList = dao.recentBoardCheck(ss);
+		ss.close();
+		
+		return voList;
+	}
+
+	
 
 }
