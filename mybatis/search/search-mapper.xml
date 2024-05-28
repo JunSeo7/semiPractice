@@ -38,5 +38,20 @@
    			, MODIFY_DATE = SYSDATE
 		WHERE NO = #{no} AND DEL_DATE IS NULL
 	</update>
+	
+	<select id="recentBoardCheck">
+		SELECT * 
+		FROM BOARD
+		WHERE DEL_DATE IS NULL
+		ORDER BY ENROLL_DATE DESC;
+	</select>
+	
+	<select id="trendingBoardCheck">
+	
+	</select>
+	
+	<select id="feedBoardCheck">
+	
+	</select>
 
 </mapper>
