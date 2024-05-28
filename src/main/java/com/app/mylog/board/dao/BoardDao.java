@@ -1,5 +1,7 @@
 package com.app.mylog.board.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.app.mylog.board.vo.BoardVo;
@@ -19,6 +21,11 @@ public class BoardDao {
 	// 게시글 수정
 	public int editBoard(SqlSession ss, BoardVo vo) {
 		return ss.update("SearchMapper.editBoard", vo);
+	}
+	
+	// 게시글 최신 조회
+	public List<BoardVo> recentBoardCheck(SqlSession ss) {
+		return ss.selectList("SearchMapper.recentBoardCheck");
 	}
 
 }
